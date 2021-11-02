@@ -29,9 +29,28 @@ body {
   top: .3em;
   bottom: .3em;
   width: calc(var(--width, 0) * 1%);
-  min-width: 2rem;
   max-width: calc(100% - .6em);
   background-color: #069;
   border-radius: 1em;
+  -webkit-animation: timer 10s ease-in both;
+          animation: timer 10s ease-in both;
+}
+
+@-webkit-keyframes timer {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes timer {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
 }
 /*# sourceMappingURL=style.css.map */

@@ -26,11 +26,15 @@ body {
     top: .3em;
     bottom: .3em;
     width: calc(var(--width, 0) * 1%); //I have given this a css-variable called width with a default of 0. to be able to change the width with % it is converted to % with the * 1%
-    min-width: 2rem; //will always show a little bit of the timer-bar eventhogh its on 0 because the min width is 2rem
     max-width: calc(100% - .6em); //and can not overflow it because of max width.
     background-color: #069;
     border-radius: 1em;
+    animation: timer 10s ease-in both;
 }
 
+@keyframes timer {
+    0% { width: 100%; }
+    100% { width: 0; }
+  }
 
 
