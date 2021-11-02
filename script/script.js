@@ -44,7 +44,7 @@ const firebaseConfig = {
   //Remove to firebase
   async function deleteName(){
     var id = this.getAttribute("data-id");
-    await deleteDoc(doc(db, "username", id));
+    await deleteDoc(doc(db, "users", id));
     displayNamesInList("listOfNames");
   }
   
@@ -70,11 +70,15 @@ const firebaseConfig = {
   
   function formatListItem(item){
     return `<li>
-  
-              <h3>Username: ${item.username} Score: ${item.score}</h3> 
+              <h3>User name: ${item.username} score: ${item.score}</h3> 
+
+              <button 
+                class="deleteName" 
+                data-id="${item.id}">
+                DELETE
+              </button>
             </li>`;
   }
-  
   function clearInput(id){
     if(!document.getElementById(id)) return null;
     document.getElementById(id).value = '';
@@ -82,7 +86,7 @@ const firebaseConfig = {
   
   function addNameToList(list, item){
     if (!document.getElementById(list)) return null;
-    document.getElementById(list).innerHTML = formatListItem(item);
+    document.getElementById(list).innerHTML += formatListItem(item);
   };
   
   function addEventListner(){
