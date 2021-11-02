@@ -5,3 +5,26 @@
 h1 {
     color: red;
 }
+
+body
+{margin: 0;
+padding: 0;
+background: linear-gradient(to top, #2267e7e0, #04034de3),
+            url("/Images/cloud1.jpg");
+   
+background-size: cover;
+min-height: 100vh;
+}
+
+.buttontest {
+    button {
+        color:blue;
+        height: 3rem;
+        width: 7rem;
+        background-color: rgba(37, 76, 253, 0.726);
+        border: none;
+        border-radius: 10%;
+
+    }
+
+}
