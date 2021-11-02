@@ -11,7 +11,7 @@ body {
 
 .timer-bar {
     position: relative;
-    width: 500px;
+    width: 300px;
     height: 2em; //if we have taxt inside it, it will scale according to the text.
     border: 2px solid #069;
     border-radius: 1em; //half of the height to make the corners rounded.
@@ -29,7 +29,7 @@ body {
     max-width: calc(100% - .6em); //and can not overflow it because of max width.
     background-color: #069;
     border-radius: 1em;
-    animation: timer 10s ease-in both;
+    animation: timer 10s ease-in both; //makes the timer go slower in the begining and the speed up, the both makes it stay at 0 in the end.
 }
 
 @keyframes timer {
