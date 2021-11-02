@@ -1,21 +1,12 @@
-//FUNCTION RestartTimerForNewQuestion
-//IF new question is displayed restart timer
-//END IF
-//END FUNCTION
 
 //FUNCTION timerReachZero
 //IF Timer reaches 0 question is failed
 //ENDIF
 //END FUNCTION
 
-function RestartTimer(){
-    let timer = document.querySelector(.timer-bar)
-
+function restartTimer(){
+    var shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
+    shrinkingTimerBar.style.animation = 'none';
+    shrinkingTimerBar.offsetHeight; /* trigger reflow */
+    shrinkingTimerBar.style.animation = null; 
 }
-
-function reset_animation() {
-    var el = document.getElementById('animated');
-    el.style.animation = 'none';
-    el.offsetHeight; /* trigger reflow */
-    el.style.animation = null;
- }
