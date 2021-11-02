@@ -10,26 +10,30 @@ body {
 
 .timer-bar {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 300px;
   height: 2em;
   border: 2px solid #069;
   border-radius: 1em;
 }
 
-.timer-bar::before {
-  content: "";
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.shrinking-timer-bar {
+  width: 90%;
+  height: 90%;
   position: absolute;
-  left: .3em;
-  top: .3em;
-  bottom: .3em;
+  left: .1em;
+  top: auto;
+  bottom: auto;
   width: calc(var(--width, 0) * 1%);
-  max-width: calc(100% - .6em);
+  max-width: calc(100% - .2em);
   background-color: #069;
   border-radius: 1em;
   -webkit-animation: timer 10s ease-in both;

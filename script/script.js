@@ -1,8 +1,21 @@
-const timerBar = document.getElementsByClassName('timer-bar')[0];
+//FUNCTION RestartTimerForNewQuestion
+//IF new question is displayed restart timer
+//END IF
+//END FUNCTION
 
-setInterval(() => {
-    const computedStyle = getComputedStyle(timerBar);
-    const width = parseFloat(computedStyle.getPropertyValue
-        ('--width')) || 0
-        timerBar.style.setProperty('--width', width + .1)
-}, 5)
+//FUNCTION timerReachZero
+//IF Timer reaches 0 question is failed
+//ENDIF
+//END FUNCTION
+
+function RestartTimer(){
+    let timer = document.querySelector(.timer-bar)
+
+}
+
+function reset_animation() {
+    var el = document.getElementById('animated');
+    el.style.animation = 'none';
+    el.offsetHeight; /* trigger reflow */
+    el.style.animation = null;
+ }

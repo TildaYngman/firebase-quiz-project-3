@@ -11,22 +11,24 @@ body {
 
 .timer-bar {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 300px;
     height: 2em; //if we have taxt inside it, it will scale according to the text.
     border: 2px solid #069;
     border-radius: 1em; //half of the height to make the corners rounded.
 }
 
-.timer-bar::before {
-    content:""; //this will together with the pseudo class create the content of the timer-bar
-    display: flex;
-    align-items: center;
+.shrinking-timer-bar {
+    width: 90%;
+    height: 90%;
     position: absolute;
-    left: .3em;
-    top: .3em;
-    bottom: .3em;
+    left: .1em;
+    top: auto;
+    bottom: auto;
     width: calc(var(--width, 0) * 1%); //I have given this a css-variable called width with a default of 0. to be able to change the width with % it is converted to % with the * 1%
-    max-width: calc(100% - .6em); //and can not overflow it because of max width.
+    max-width: calc(100% - .2em); //and can not overflow it because of max width.
     background-color: #069;
     border-radius: 1em;
     animation: timer 10s ease-in both; //makes the timer go slower in the begining and the speed up, the both makes it stay at 0 in the end.
