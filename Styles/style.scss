@@ -1,7 +1,36 @@
-* {
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
-h1 {
-    color: red;
+body {
+    padding: 0;
+    margin: 0;
 }
+
+//we need to set the width of the timer-bar according to the width of the app.
+
+.timer-bar {
+    position: relative;
+    width: 500px;
+    height: 2em; //if we have taxt inside it, it will scale according to the text.
+    border: 2px solid #069;
+    border-radius: 1em; //half of the height to make the corners rounded.
+}
+
+.timer-bar::before {
+    content:""; //this will together with the pseudo class create the content of the timer-bar
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: .3em;
+    top: .3em;
+    bottom: .3em;
+    width: calc(var(--width, 0) * 1%); //I have given this a css-variable called width with a default of 0. to be able to change the width with % it is converted to % with the * 1%
+    min-width: 2rem; //will always show a little bit of the timer-bar eventhogh its on 0 because the min width is 2rem
+    max-width: calc(100% - .6em); //and can not overflow it because of max width.
+    background-color: #069;
+    border-radius: 1em;
+}
+
+
+
