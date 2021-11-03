@@ -7,6 +7,7 @@ import {
   deleteDoc,
   getDocs,
   orderBy,
+  query,
 } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
 
 //Add your own config content
@@ -53,21 +54,19 @@ async function deleteName() {
 
 //Get all from firebase
 async function getNames() {
-  const users = await getDocs(collection(db, "users"));
+  // const users = await getDocs(collection(db, "users"));
 
-  // const users = await getDocs(collection(db, "users", orderBy("score").on("child_added")),);
-
-
-  // console.log("user", users)
-  // console.log(users.sort(function (a, b) { return doc.data().score - doc.data().score }))
-  // , orderBy("score"));
-  // users.orderByChild("score").on("child_added");
+  const docRef = collection(db, "users");
+  const q = query(docRef, orderBy("score", "desc"));
+  const names = await getDocs(q);
+  return names;
 
 
 
 
 
-  return users;
+
+  // return users;
 };
 
 function readInput(id) {
