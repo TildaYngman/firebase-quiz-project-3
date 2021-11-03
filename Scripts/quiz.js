@@ -10,7 +10,8 @@ let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuesions = [];
-let questions = {};
+let questions = [];
+let questionsAnswers = {};
 
 async function loadedQuestionsFromApi() {
   const response = await fetch(
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   console.log(questions);
-  var questionsAnswers = questions.results.map((question) => {
+  questionsAnswers = questions.results.map((question) => {
     return formatQuestion(question);
   });
   //loops throw the array, and formats each question
@@ -73,13 +74,13 @@ function formatQuestion(loadedQuestion) {
 const MAX_QUESTIONS = 10;
 
 startGame = () => {
-  questionCounter = 0;
-  score = 0;
-  questionsAnswers = [...questions];
-  console.log(availableQuesions);
+  /* questionCounter = 0;
+  score = 0; */
+  availableQuesions = [...questions];
+  /* availableQuesions = [...questions]; */
   getNewQuestion();
-  game.classList.remove("hidden");
-  loader.classList.add("hidden");
+  /* game.classList.remove("hidden");
+  loader.classList.add("hidden"); */
 };
 
 getNewQuestion = () => {
