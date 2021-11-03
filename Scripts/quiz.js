@@ -64,17 +64,66 @@ function formatQuestion(loadedQuestion) {
     //choice = [choice1: ..., choice2: ...] in formattedQuestion object
     //choice1 : 24
     formattedQuestion["choice" + (index + 1)] = choice;
+    return formattedQuestion;
   });
 
-  return formattedQuestion;
+  startGame();
 }
 
 const MAX_QUESTIONS = 10;
 
+startGame = () => {
+  questionCounter = 0;
+  score = 0;
+  questionsAnswers = [...questions];
+  console.log(availableQuesions);
+  getNewQuestion();
+  game.classList.remove("hidden");
+  loader.classList.add("hidden");
+};
+
 getNewQuestion = () => {
   const questionIndex = Math.floor(Math.random() * 10);
   //random questions from the available questions
-  currentQuestion = questions[questionIndex];
+  //objectName["propertyName"]
+  currentQuestion = questionsAnswers[questionIndex];
+  question.innerHTML = currentQuestion.question;
 
-  return currentQuestion;
+  choices.forEach((choice) => {
+    //takes the dataset number from the html ex 2
+    const number = choice.dataset["number"];
+    choice.innerHTML = currentQuestion["choice" + number];
+  });
+
+  availableQuesions.splice(questionIndex, 1);
+  acceptingAnswers = true;
+};
+
+choices.forEach((choice) => {
+  choice.addEventListener("click", (e) => {
+    if (!acceptingAnswers) return;
+
+    acceptingAnswers = false;
+    const selectedChoice = e.target;
+    const selectedAnswer = selectedChoice.dataset["number"];
+
+    const classToApply =
+      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+
+    if (classToApply === "correct") {
+      incrementScore(CORRECT_BONUS);
+    }
+
+    selectedChoice.parentElement.classList.add(classToApply);
+
+    setTimeout(() => {
+      selectedChoice.parentElement.classList.remove(classToApply);
+      getNewQuestion();
+    }, 1000);
+  });
+});
+
+incrementScore = (num) => {
+  score += num;
+  scoreText.innerText = score;
 };
