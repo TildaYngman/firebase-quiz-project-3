@@ -52,12 +52,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   function createPreviewCard() {
     var wrapper = document.getElementById("postsSummaries")
         let i = questionCounter;
+        if (questionCounter < 10) {
         wrapper.innerHTML = `<p>${questionsAnswers[i].question}</p> 
+        <div class="question-container">
         <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice1}</button> 
         <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice2}</button> 
         <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice3}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard()"> ${questionsAnswers[i].choice4}</button>`;
+        <button class="answerBtn" onclick = "createPreviewCard()"> ${questionsAnswers[i].choice4}</button>
+        </div>`;
         questionCounter++;
+      } else {
+        window.location.href = "gameover.html";
+      }
   };
 console.log(questionsAnswers);
 
