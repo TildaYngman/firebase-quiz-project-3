@@ -48,14 +48,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     return formattedQuestion;
   }
 
-  function createPreviewCard(card) {
+
+  function createPreviewCard() {
     var wrapper = document.getElementById("postsSummaries")
         let i = questionCounter;
         wrapper.innerHTML = `<p>${questionsAnswers[i].question}</p> 
-        <button>${questionsAnswers[i].choice1}</button> 
-        <button>${questionsAnswers[i].choice2}</button> 
-        <button>${questionsAnswers[i].choice3}</button> 
-        <button>${questionsAnswers[i].choice4}</button>`;
+        <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice1}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice2}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice3}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard()"> ${questionsAnswers[i].choice4}</button>`;
         questionCounter++;
   };
 console.log(questionsAnswers);
