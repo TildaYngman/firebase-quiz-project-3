@@ -48,8 +48,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     return formattedQuestion;
   }
 
-  
-
   function createPreviewCard(card) {
     var wrapper = document.getElementById("postsSummaries")
         let i = questionCounter;
