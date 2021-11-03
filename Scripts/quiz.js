@@ -19,14 +19,12 @@ async function loadedQuestionsFromApi() {
   //variabel questions is waiting for the response to be formatted to json.
 
   //Questions contain the formatted json response. The response is an object, containging two propertys the response code and the results. The results is an array of the 10 objects (questions).
-  let questions = await response.json();
-
-  return questions;
+  return await response.json();
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    //questions is wating for the loadedQuestonsFromApi function to retrun questions
+    //questions is wating for the loadedQuestonsFromApi function to return questions
     questions = await loadedQuestionsFromApi();
   } catch (e) {
     console.log("Error!");
