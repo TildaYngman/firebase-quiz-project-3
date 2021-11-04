@@ -48,6 +48,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     return formattedQuestion;
   }
 
+  function restartTimer(){
+    var shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
+    shrinkingTimerBar.style.animation = 'none';
+    shrinkingTimerBar.offsetHeight; /* trigger reflow */
+    shrinkingTimerBar.style.animation = null; 
+} 
+
 
   function createPreviewCard() {
     var wrapper = document.getElementById("postsSummaries")
