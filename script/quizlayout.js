@@ -32,6 +32,7 @@ const startBtn = document.getElementById("start-quiz-btn")
 startBtn.addEventListener('click', hideBtn)
 
 function hideBtn() {
+  console.log("started")
   startBtn.classList.add('hide');
 }
   
