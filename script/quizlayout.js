@@ -55,10 +55,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (questionCounter < 10) {
         wrapper.innerHTML = `<p>${questionsAnswers[i].question}</p> 
         <div class="question-container">
-        <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice1}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice2}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice3}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard()"> ${questionsAnswers[i].choice4}</button>
+        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice1}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice2}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice3}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()"> ${questionsAnswers[i].choice4}</button>
         </div>`;
         questionCounter++;
       } else {
