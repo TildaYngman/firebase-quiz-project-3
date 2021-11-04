@@ -114,6 +114,7 @@ getNewQuestion = () => {
 
 choices.forEach((choice) => {
   choice.addEventListener("click", (e) => {
+    //om acceptingAnswers inte är true skickas man tillbaka. Går inte att klicka om inte acceptingAnswers = true
     if (!acceptingAnswers) return;
 
     acceptingAnswers = false;
