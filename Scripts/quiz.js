@@ -1,8 +1,8 @@
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
-const progressText = document.getElementById("progressText");
+/* const progressText = document.getElementById("progressText"); */
 const scoreText = document.getElementById("score");
-const progressBarFull = document.getElementById("progressBarFull");
+/* const progressBarFull = document.getElementById("progressBarFull"); */
 const loader = document.getElementById("loader");
 const game = document.getElementById("game");
 let currentQuestion = {};
@@ -118,6 +118,7 @@ choices.forEach((choice) => {
     if (!acceptingAnswers) return;
 
     acceptingAnswers = false;
+    //Get the element that triggered a specific event
     const selectedChoice = e.target;
     const selectedAnswer = selectedChoice.dataset["number"];
 
