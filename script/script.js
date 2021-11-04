@@ -59,7 +59,9 @@ async function getNames() {
   const docRef = collection(db, "users");
   const q = query(docRef, orderBy("score", "desc"));
   const names = await getDocs(q);
+  console.log(names)
   return names;
+  console.log(names)
 
 
 
