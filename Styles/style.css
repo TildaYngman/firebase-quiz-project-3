@@ -1,10 +1,90 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+.hide {
+  display: none;
+}
+
+#start-quiz-btn {
+  cursor: pointer;
+  border-radius: 5rem;
+  background-color: #203b81;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 1rem;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  width: 28rem;
+  height: 5.5rem;
+  text-align: center;
+}
+
+#postsSummaries {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.question-container {
+  background-color: white;
+  border-radius: 0.7rem;
+  padding: 2rem;
+  margin: 5rem;
+  width: 42.5rem;
+  height: 15rem;
+  text-align: center;
+}
+
+.question-container p {
+  font-size: 1.6rem;
+}
+
+.answer-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.answerBtn {
+  cursor: pointer;
+  border-radius: 5rem;
+  background-color: #203b81;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 1rem;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  width: 28rem;
+  height: 5.5rem;
+  text-align: center;
+}
+
 *,
 *::before,
 *::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-size: 10px;
+  font-size: 62.5%;
   font-family: "Inter", sans-serif;
 }
 
@@ -75,7 +155,7 @@ main {
   color: white;
 }
 
-.btn-start {
+.btn-landing {
   cursor: pointer;
   border-radius: 5rem;
   background-color: #203b81;

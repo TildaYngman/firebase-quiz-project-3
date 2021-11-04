@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "game.scss";
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  // font-size: 62.5%; // 1rem = 10px
-  font-size: 10px;
+  font-size: 62.5%; // 1rem = 10px
   font-family: "Inter", sans-serif;
 }
 
@@ -56,7 +56,7 @@ main {
   }
 }
 
-.btn-start {
+.btn-landing {
   cursor: pointer;
   border-radius: 5rem;
   background-color: #203b81;
