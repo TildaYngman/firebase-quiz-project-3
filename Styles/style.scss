@@ -1,30 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%; // 1rem = 10px
+  font-family: "Inter", sans-serif;
 }
 
-h1 {
-    color: red;
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to top, #2267e7e0, #04034de3),
+    url("/Images/cloud1.jpg");
+
+  background-size: cover;
+  min-height: 100vh;
 }
 
-body
-{margin: 0;
-padding: 0;
-background: linear-gradient(to top, #2267e7e0, #04034de3),
-            url("/Images/cloud1.jpg");
-   
-background-size: cover;
-min-height: 100vh;
+main {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  background: linear-gradient(to top, #3271e6e0, #181596e3),
+    url("/Images/cloud1.jpg");
+
+  background-size: cover;
+  border-radius: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 55rem;
+  width: 45rem;
+  margin: 10rem;
+  box-shadow: 0px 0px 15px 5px rgba(253, 246, 246, 0.5);
+}
+
+.logo {
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18rem;
+  width: 18rem;
+  border-radius: 50%;
+  background-color: #2a7cf6;
+  margin: 5rem 0 4rem 0;
+  p {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+  }
+}
+
+.btn-start {
+  cursor: pointer;
+  border-radius: 5rem;
+  background-color: #203b81;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 1rem;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  width: 18rem;
+  text-align: center;
 }
 
 .buttontest {
-    button {
-        color:blue;
-        height: 3rem;
-        width: 7rem;
-        background-color: rgba(37, 76, 253, 0.726);
-        border: none;
-        border-radius: 10%;
-
-    }
-
+  button {
+    color: blue;
+    height: 3rem;
+    width: 7rem;
+    background-color: rgba(37, 76, 253, 0.726);
+    border: none;
+    border-radius: 10%;
+  }
 }
