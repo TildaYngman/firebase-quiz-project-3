@@ -11,10 +11,10 @@ let score = 0;
 let questionCounter = 0;
 let availableQuesions = [];
 let questions = [];
-let questionsAnswers = {};
+let questionsAnswers = [];
 
 async function loadedQuestionsFromApi() {
-  const response = await fetch(
+  let response = await fetch(
     "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
   );
   //variabel questions is waiting for the response to be formatted to json.
@@ -33,12 +33,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   console.log(questions);
+
   questionsAnswers = questions.results.map((question) => {
     return formatQuestion(question);
   });
   //loops throw the array, and formats each question
   //questionsAnswers is an array of 10 objects(questions)
   console.log(questionsAnswers);
+  startGame();
 });
 
 //formats question into correct format
@@ -65,30 +67,37 @@ function formatQuestion(loadedQuestion) {
     //choice = [choice1: ..., choice2: ...] in formattedQuestion object
     //choice1 : 24
     formattedQuestion["choice" + (index + 1)] = choice;
-    return formattedQuestion;
   });
-
-  startGame();
+  return formattedQuestion;
 }
-
+const CORRECT_BONUS = 10;
 const MAX_QUESTIONS = 10;
-
 startGame = () => {
-  /* questionCounter = 0;
-  score = 0; */
-  availableQuesions = [...questions];
+  questionCounter = 0;
+  score = 0;
+  availableQuesions = [...questionsAnswers];
+  console.log(availableQuesions);
   /* availableQuesions = [...questions]; */
   getNewQuestion();
-  /* game.classList.remove("hidden");
-  loader.classList.add("hidden"); */
+  game.classList.remove("hidden");
+  loader.classList.add("hidden");
 };
 
 getNewQuestion = () => {
-  const questionIndex = Math.floor(Math.random() * 10);
+  questionCounter++;
+  if (questionCounter === 10) {
+    localStorage.setItem("mostRecentScore", score);
+    //go to the end page
+    return window.location.assign("/end.html");
+  }
+  let questionIndex = Math.floor(Math.random() * 10);
   //random questions from the available questions
-  //objectName["propertyName"]
+
   currentQuestion = questionsAnswers[questionIndex];
+  console.log(questionsAnswers);
+  console.log(currentQuestion);
   question.innerHTML = currentQuestion.question;
+  console.log(currentQuestion.question);
 
   choices.forEach((choice) => {
     //takes the dataset number from the html ex 2
