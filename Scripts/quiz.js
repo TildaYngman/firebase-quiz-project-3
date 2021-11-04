@@ -32,14 +32,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(e);
   }
 
-  console.log(questions);
+  /* console.log(questions); */
 
   questionsAnswers = questions.results.map((question) => {
     return formatQuestion(question);
   });
   //loops throw the array, and formats each question
   //questionsAnswers is an array of 10 objects(questions)
-  console.log(questionsAnswers);
+  /* console.log(questionsAnswers); */
   startGame();
 });
 
@@ -84,16 +84,18 @@ startGame = () => {
 };
 
 getNewQuestion = () => {
-  questionCounter++;
-  if (questionCounter === 10) {
+  if (availableQuesions.length === 0) {
     localStorage.setItem("mostRecentScore", score);
     //go to the end page
     return window.location.assign("/end.html");
   }
-  let questionIndex = Math.floor(Math.random() * 10);
-  //random questions from the available questions
 
-  currentQuestion = questionsAnswers[questionIndex];
+  /* questionCounter++; */
+  let questionIndex = Math.floor(Math.random() * availableQuesions.length);
+  //random questions from the available questions
+  console.log(availableQuesions);
+
+  currentQuestion = availableQuesions[questionIndex];
   console.log(questionsAnswers);
   console.log(currentQuestion);
   question.innerHTML = currentQuestion.question;
@@ -106,6 +108,7 @@ getNewQuestion = () => {
   });
 
   availableQuesions.splice(questionIndex, 1);
+  console.log(availableQuesions);
   acceptingAnswers = true;
 };
 
