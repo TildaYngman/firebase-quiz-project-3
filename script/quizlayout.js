@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function timeOutWrongAnswer() {
-    alert("Hello! I am an alert box!!");
+    alert("The time is out");
   }
 
   timeOut()
