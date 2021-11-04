@@ -9,21 +9,15 @@
     <link rel="stylesheet" href="../Styles/quizlayout.css" />
   </head>
   <body>
-    <div class="timer-bar">
-      <div class="shrinking-timer-bar"></div>
-    </div>
-
-    <div id="postsSummaries"></div>
-    <button onclick="createPreviewCard()">Start Quiz</button>
     <main>
       <div class="container">
-        <div class="logo">
-          <p>LOGO</p>
+        <div class="timer-bar">
+          <div class="shrinking-timer-bar"></div>
         </div>
-        <a class="btn-start" href="./quiz.html">Start Quiz</a>
-        <a class="btn-start" href="./highscore.html">High Scores</a>
-        <a class="btn-start" href="#">Settings</a>
-        <a class="btn-start" href="#">Help</a>
+        <button onclick="restartTimer()">Restart Timer</button>
+
+        <div id="postsSummaries"></div>
+        <button onclick="createPreviewCard()">Start Quiz</button>
       </div>
     </main>
     <script
