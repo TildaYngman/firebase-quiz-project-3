@@ -10,6 +10,7 @@ async function loadedQuestionsFromApi() {
 
   let questionsAnswers = [];
   let questionCounter = 0;
+  let shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
   
 document.addEventListener("DOMContentLoaded", async () => {
     let questions = [];
@@ -48,24 +49,36 @@ document.addEventListener("DOMContentLoaded", async () => {
     return formattedQuestion;
   }
 
+
   function restartTimer(){
-    var shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
     shrinkingTimerBar.style.animation = 'none';
     shrinkingTimerBar.offsetHeight; /* trigger reflow */
     shrinkingTimerBar.style.animation = null; 
-} 
+  } 
 
+  function timeOut() {
+    shrinkingTimerBar.addEventListener("webkitAnimationEnd", timeOutWrongAnswer, false);
+    shrinkingTimerBar.addEventListener("animationend", timeOutWrongAnswer, false);
+    timeOut()
+    timeOutWrongAnswer()
+  }
 
-  function createPreviewCard() {
-    var wrapper = document.getElementById("postsSummaries")
+  function timeOutWrongAnswer() {
+    alert("Hello! I am an alert box!!");
+  }
+
+  timeOut()
+
+  function displayQuestionsAnswers() {
+    var wrapper = document.getElementById("questionsAnswersContainer")
         let i = questionCounter;
         if (questionCounter < 10) {
         wrapper.innerHTML = `<p>${questionsAnswers[i].question}</p> 
         <div class="question-container">
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice1}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice2}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice3}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()"> ${questionsAnswers[i].choice4}</button>
+        <button class="answerBtn" onclick = "displayQuestionsAnswers(); restartTimer()">${questionsAnswers[i].choice1}</button> 
+        <button class="answerBtn" onclick = "displayQuestionsAnswers(); restartTimer()">${questionsAnswers[i].choice2}</button> 
+        <button class="answerBtn" onclick = "displayQuestionsAnswers(); restartTimer()">${questionsAnswers[i].choice3}</button> 
+        <button class="answerBtn" onclick = "displayQuestionsAnswers(); restartTimer()"> ${questionsAnswers[i].choice4}</button>
         </div>`;
         questionCounter++;
       } else {
