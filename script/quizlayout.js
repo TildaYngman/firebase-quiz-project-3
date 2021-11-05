@@ -57,6 +57,25 @@ function hideBtn() {
     return formattedQuestion;
   }
 
+  function restartTimer(){
+    shrinkingTimerBar.style.animation = 'none';
+    shrinkingTimerBar.offsetHeight; /* trigger reflow */
+    shrinkingTimerBar.style.animation = null; 
+  } 
+
+  function timeOut() {
+    shrinkingTimerBar.addEventListener("webkitAnimationEnd", timeOutWrongAnswer, false);
+    shrinkingTimerBar.addEventListener("animationend", timeOutWrongAnswer, false);
+    timeOut()
+    timeOutWrongAnswer()
+  }
+
+  function timeOutWrongAnswer() {
+    alert("The time is out");
+  }
+
+  timeOut()
+
 
   function createPreviewCard() {
     var wrapper = document.getElementById("postsSummaries")
