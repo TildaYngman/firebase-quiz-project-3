@@ -26,6 +26,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     console.log(questionsAnswers);
 });
+
+const startBtn = document.getElementById("start-quiz-btn")
+
+startBtn.addEventListener('click', hideBtn)
+
+function hideBtn() {
+  console.log("started")
+  startBtn.classList.add('hide');
+}
   
   function formatQuestion(loadedQuestion) {
     const formattedQuestion = {
@@ -53,8 +62,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     var wrapper = document.getElementById("postsSummaries")
         let i = questionCounter;
         if (questionCounter < 10) {
-        wrapper.innerHTML = `<p>${questionsAnswers[i].question}</p> 
+        wrapper.innerHTML = `
         <div class="question-container">
+        <p>${questionsAnswers[i].question}</p>
+        </div> 
+        <div class="answer-container">
         <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice1}</button> 
         <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice2}</button> 
         <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice3}</button> 
@@ -62,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         </div>`;
         questionCounter++;
       } else {
-        window.location.href = "gameover.html";
+        window.location.href = "index.html";
       }
   };
 console.log(questionsAnswers);
