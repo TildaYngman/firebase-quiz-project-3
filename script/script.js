@@ -53,6 +53,8 @@ const firebaseConfig = {
   async function getNames() {
     const users = await getDocs(collection(db, "users"));
     return users;
+
+    
   };
   
   function readInput(id){
