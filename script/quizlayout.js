@@ -114,6 +114,13 @@ getNewQuestion = () => {
   acceptingAnswers = true;
 };
 
+function restartTimer() {
+  var shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
+  shrinkingTimerBar.style.animation = "none";
+  shrinkingTimerBar.offsetHeight; /* trigger reflow */
+  shrinkingTimerBar.style.animation = null;
+}
+
 choices.forEach((choice) => {
   choice.addEventListener("click", (e) => {
     //om acceptingAnswers inte är true skickas man tillbaka. Går inte att klicka om inte acceptingAnswers = true
@@ -134,9 +141,9 @@ choices.forEach((choice) => {
 
     setTimeout(() => {
       selectedChoice.parentElement.classList.remove(classToApply);
-
+      restartTimer();
       getNewQuestion();
-    }, 1000);
+    }, 8000);
   });
 });
 
