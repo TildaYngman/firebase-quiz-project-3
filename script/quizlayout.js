@@ -88,6 +88,7 @@ function hideBtn() {
         console.log(questionsArray)
         if (questionCounter < 10) {
         wrapper.innerHTML = `
+        <div id="display-score"></div>
         <div class="question-container">
         <p>${questionsArray[i].question}</p>
         </div> 
@@ -98,8 +99,10 @@ function hideBtn() {
         <button class="answerBtn" onclick = "createPreviewCard()"> ${questionsArray[i].incorrect_answers[2]}</button>
         </div>`;
         questionCounter++;
+        console.log(questionCounter);
       } else {
-        window.location.href = "highscore.html";
+        wrapper.innerHTML = `<h1 id="display-score">${quizPoints}</h1>`;
+        // window.location.href = "highscore.html";
       }
       initilizeButtons();
       shuffle();
