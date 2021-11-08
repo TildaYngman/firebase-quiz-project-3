@@ -112,6 +112,13 @@ getNewQuestion = () => {
   availableQuesions.splice(questionIndex, 1);
   console.log(availableQuesions);
   acceptingAnswers = true;
+
+  restartTimer();
+  /* setTimeout(() => {
+    /* selectedChoice.parentElement.classList.remove(classToApply); */
+
+  /*    getNewQuestion();
+  }, 10000); */
 };
 
 function restartTimer() {
@@ -141,9 +148,9 @@ choices.forEach((choice) => {
 
     setTimeout(() => {
       selectedChoice.parentElement.classList.remove(classToApply);
-      restartTimer();
+
       getNewQuestion();
-    }, 8000);
+    }, 1000);
   });
 });
 
