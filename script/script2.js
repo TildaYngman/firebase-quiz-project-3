@@ -25,31 +25,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-//Add to firebase
-async function addName() {
-  var username = readInput("username");
-  var score = parseInt(readInput("score"));
-
-  if (!username) return null;
-  try {
-    const docRef = await addDoc(collection(db, "users"), {
-      username: username,
-      score: score,
-    });
-    clearInput("username");
-    clearInput("score")
-    displayNamesInList("listOfNames");
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-}
-
-//Remove to firebase
-async function deleteName() {
-  var id = this.getAttribute("data-id");
-  await deleteDoc(doc(db, "users", id));
-  displayNamesInList("listOfNames");
-}
 
 
 //Get all from firebase
@@ -89,11 +64,7 @@ function formatListItem(item) {
   return `<li>
               <h3>User name: ${item.username} score: ${item.score}</h3> 
 
-              <button 
-                class="deleteName" 
-                data-id="${item.id}">
-                DELETE
-              </button>
+             
             </li>`;
 }
 function clearInput(id) {
