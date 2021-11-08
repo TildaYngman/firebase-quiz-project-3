@@ -1,3 +1,7 @@
+let questionsAnswers = [];
+let questionCounter = 0;
+let shrinkingTimerBar;
+
 async function loadedQuestionsFromApi() {
     const response = await fetch(
       "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
@@ -7,10 +11,6 @@ async function loadedQuestionsFromApi() {
   
     return questions;
 }
-
-  let questionsAnswers = [];
-  let questionCounter = 0;
-  let shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
   
 document.addEventListener("DOMContentLoaded", async () => {
     let questions = [];
@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(questionsAnswers);
 });
 
-const startBtn = document.getElementById("start-quiz-btn")
+const startBtn = document.getElementById("start-quiz-btn");
 
-startBtn.addEventListener('click', hideBtn)
+startBtn.addEventListener('click', hideBtn);
 
 function hideBtn() {
   console.log("started")
@@ -58,43 +58,45 @@ function hideBtn() {
     return formattedQuestion;
   }
 
-  function restartTimer(){
-    shrinkingTimerBar.style.animation = 'none';
-    shrinkingTimerBar.offsetHeight; /* trigger reflow */
-    shrinkingTimerBar.style.animation = null; 
-  } 
-
-  function timeOut() {
-    shrinkingTimerBar.addEventListener("webkitAnimationEnd", timeOutWrongAnswer, false);
-    shrinkingTimerBar.addEventListener("animationend", timeOutWrongAnswer, false);
-    timeOutWrongAnswer()
-  }
-
-  function timeOutWrongAnswer() {
-    alert("The time is out");
-  }
-
-  timeOut()
-
-
   function createPreviewCard() {
     var wrapper = document.getElementById("postsSummaries")
         let i = questionCounter;
         if (questionCounter < 10) {
         wrapper.innerHTML = `
         <div class="question-container">
-        <p>${questionsAnswers[i].question}</p>
-        </div> 
+          <p>${questionsAnswers[i].question}</p>
+        </div>
+
+        <div class="timer-bar">
+          <div class="shrinking-timer-bar"></div>
+        </div>
+
         <div class="answer-container">
         <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice1}</button> 
         <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice2}</button> 
         <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice3}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()"> ${questionsAnswers[i].choice4}</button>
+        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice4}</button>
         </div>`;
         questionCounter++;
+        shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
+        timeOut();
       } else {
         window.location.href = "index.html";
       }
   };
 console.log(questionsAnswers);
 
+function restartTimer(){
+  shrinkingTimerBar.style.animation = 'none';
+  shrinkingTimerBar.offsetHeight; /* trigger reflow */
+  shrinkingTimerBar.style.animation = null; 
+} 
+
+function timeOut() {
+  shrinkingTimerBar.addEventListener("webkitAnimationEnd", timeOutWrongAnswer, false);
+  shrinkingTimerBar.addEventListener("animationend", timeOutWrongAnswer, false);
+}
+
+function timeOutWrongAnswer() {
+  alert("The time is out");
+}
