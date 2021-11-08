@@ -1,69 +1,164 @@
+const question = document.getElementById("question");
+const choices = Array.from(document.getElementsByClassName("choice-text"));
+console.log(choices);
+
+const progressText = document.getElementById("progressText");
+const scoreText = document.getElementById("score");
+const progressBarFull = document.getElementById("progressBarFull");
+const loader = document.getElementById("loader");
+const game = document.getElementById("game");
+let currentQuestion = {};
+let acceptingAnswers = false;
+let score = 0;
+let questionCounter = 0;
+let availableQuesions = [];
+let questions = [];
+let questionsAnswers = [];
+
 async function loadedQuestionsFromApi() {
-    const response = await fetch(
-      "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
-    );
-    //variabel questions is waiting for the response to be formatted to json.
-    const questions = await response.json();
-  
-    return questions;
+  let response = await fetch(
+    "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
+  );
+  //variabel questions is waiting for the response to be formatted to json.
+
+  //Questions contain the formatted json response. The response is an object, containging two propertys the response code and the results. The results is an array of the 10 objects (questions).
+  return await response.json();
 }
 
-  let questionsAnswers = [];
-  let questionCounter = 0;
-  
 document.addEventListener("DOMContentLoaded", async () => {
-    let questions = [];
-
-    try {
-        questions = await loadedQuestionsFromApi();
-    } catch (e) {
-        console.log("Error!");
-        console.log(e);
-    }
-    console.log(questions);
-    questionsAnswers = questions.results.map((question) => {
-        return formatQuestion(question);
-    });
-    console.log(questionsAnswers);
-});
-  
-  function formatQuestion(loadedQuestion) {
-    const formattedQuestion = {
-      question: loadedQuestion.question,
-    };
-  
-    const answerChoices = [...loadedQuestion.incorrect_answers];
-    formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
-    answerChoices.splice(
-      formattedQuestion.answer - 1,
-      0,
-      loadedQuestion.correct_answer
-    );
-    //puts correct answer somewhere in the array [0-3]
-  
-    answerChoices.forEach((choice, index) => {
-      formattedQuestion["choice" + (index + 1)] = choice;
-    });
-    //choice = [choice1, choice2...] in formattedQuestion object
-    return formattedQuestion;
+  try {
+    //questions is wating for the loadedQuestonsFromApi function to return questions
+    questions = await loadedQuestionsFromApi();
+  } catch (e) {
+    console.log("Error!");
+    console.log(e);
   }
 
+  /* console.log(questions); */
 
-  function createPreviewCard() {
-    var wrapper = document.getElementById("postsSummaries")
-        let i = questionCounter;
-        if (questionCounter < 10) {
-        wrapper.innerHTML = `<p>${questionsAnswers[i].question}</p> 
-        <div class="question-container">
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice1}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice2}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice3}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()"> ${questionsAnswers[i].choice4}</button>
-        </div>`;
-        questionCounter++;
-      } else {
-        window.location.href = "gameover.html";
-      }
+  questionsAnswers = questions.results.map((question) => {
+    return formatQuestion(question);
+  });
+  //loops throw the array, and formats each question
+  //questionsAnswers is an array of 10 objects(questions)
+  /* console.log(questionsAnswers); */
+  startGame();
+});
+
+//formats question into correct format
+function formatQuestion(loadedQuestion) {
+  const formattedQuestion = {
+    //gets the specific question in the question/loadedQuestion object
+    question: loadedQuestion.question,
   };
-console.log(questionsAnswers);
+  //gets the incorrect answers form the question/loadedQuestion object
+  const answerChoices = [...loadedQuestion.incorrect_answers];
 
+  //is going to be a random number between 1-4 ex 1, puts answer in the object formattedQuestion, answer: 1
+  formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
+
+  //splice(start = formattedQuestion.answer - 1, deleteCount = 0, item1 = loadedQuestion.correct_answer)
+  //puts the correct answer somewhere in the answerChoicesarray [0-3]
+  answerChoices.splice(
+    formattedQuestion.answer - 1,
+    0,
+    loadedQuestion.correct_answer
+  );
+  //exempel ['24', '15', '18']
+  answerChoices.forEach((choice, index) => {
+    //choice = [choice1: ..., choice2: ...] in formattedQuestion object
+    //choice1 : 24
+    formattedQuestion["choice" + (index + 1)] = choice;
+  });
+  return formattedQuestion;
+}
+const CORRECT_BONUS = 10;
+const MAX_QUESTIONS = 10;
+startGame = () => {
+  questionCounter = 0;
+  score = 0;
+  availableQuesions = [...questionsAnswers];
+  console.log(availableQuesions);
+  /* availableQuesions = [...questions]; */
+  getNewQuestion();
+  game.classList.remove("hidden");
+  loader.classList.add("hidden");
+};
+
+getNewQuestion = () => {
+  if (availableQuesions.length === 0) {
+    localStorage.setItem("mostRecentScore", score);
+    //go to the end page
+    return window.location.assign("/end.html");
+  }
+
+  /* questionCounter++; */
+  let questionIndex = Math.floor(Math.random() * availableQuesions.length);
+  //random questions from the available questions
+  console.log(availableQuesions);
+
+  currentQuestion = availableQuesions[questionIndex];
+  console.log(questionsAnswers);
+  console.log(currentQuestion);
+  question.innerHTML = currentQuestion.question;
+  console.log(currentQuestion.question);
+
+  choices.forEach((choice) => {
+    //takes the dataset number from the html ex 2
+    const number = choice.dataset["number"];
+    choice.innerHTML = currentQuestion["choice" + number];
+  });
+
+  availableQuesions.splice(questionIndex, 1);
+  console.log(availableQuesions);
+  acceptingAnswers = true;
+};
+
+choices.forEach((choice) => {
+  choice.addEventListener("click", (e) => {
+    //om acceptingAnswers inte är true skickas man tillbaka. Går inte att klicka om inte acceptingAnswers = true
+    if (!acceptingAnswers) return;
+
+    acceptingAnswers = false;
+    const selectedChoice = e.target;
+    const selectedAnswer = selectedChoice.dataset["number"];
+
+    const classToApply =
+      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+
+    if (classToApply === "correct") {
+      incrementScore(CORRECT_BONUS);
+    }
+
+    selectedChoice.parentElement.classList.add(classToApply);
+
+    setTimeout(() => {
+      selectedChoice.parentElement.classList.remove(classToApply);
+
+      getNewQuestion();
+    }, 1000);
+  });
+});
+
+incrementScore = (num) => {
+  score += num;
+  scoreText.innerText = score;
+};
+
+/* function createPreviewCard() {
+  var wrapper = document.getElementById("postsSummaries");
+  let i = questionCounter;
+  if (questionCounter < 10) {
+    wrapper.innerHTML = `<p>${questionsAnswers[i].question}</p> 
+        <div class="question-container">
+        <button class="choice-text" data-number="1" class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice1}</button> 
+        <button class="choice-text" data-number="2" class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice2}</button> 
+        <button class="choice-text" data-number="3" class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice3}</button> 
+        <button class="choice-text" data-number="4" class="answerBtn" onclick = "createPreviewCard(); restartTimer()"> ${questionsAnswers[i].choice4}</button>
+        </div>`;
+    questionCounter++;
+  } else {
+    window.location.href = "gameover.html";
+  }
+} */
+console.log(questionsAnswers);

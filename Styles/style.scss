@@ -1,7 +1,8 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   font-size: 62.5%; // 1rem = 10px
   font-family: "Inter", sans-serif;
@@ -27,10 +28,12 @@ main {
 
   background-size: cover;
   border-radius: 0.7rem;
+  padding: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 6rem;
   height: 55rem;
   width: 45rem;
   margin: 10rem;
@@ -68,6 +71,31 @@ main {
   text-align: center;
 }
 
+.btn {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  width: 20rem;
+  text-align: center;
+  border: 0.1rem solid #56a5eb;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #56a5eb;
+  background-color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
 .buttontest {
   button {
     color: blue;
@@ -79,33 +107,38 @@ main {
   }
 }
 
-
 .timer-bar {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 2em; //if we have taxt inside it, it will scale according to the text.
-    border: 2px solid #069;
-    border-radius: 1em; //half of the height to make the corners rounded.
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 2em; //if we have taxt inside it, it will scale according to the text.
+  border: 2px solid #069;
+  border-radius: 1em; //half of the height to make the corners rounded.
 }
 
 .shrinking-timer-bar {
-    width: 90%;
-    height: 90%;
-    position: absolute;
-    left: .1em;
-    top: auto;
-    bottom: auto;
-    width: calc(var(--width, 0) * 1%); //I have given this a css-variable called width with a default of 0. to be able to change the width with % it is converted to % with the * 1%
-    max-width: calc(100% - .2em); //and can not overflow it because of max width.
-    background-color: #069;
-    border-radius: 1em;
-    animation: timer 10s ease-in both; //makes the timer go slower in the begining and the speed up, the both makes it stay at 0 in the end.
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  left: 0.1em;
+  top: auto;
+  bottom: auto;
+  width: calc(
+    var(--width, 0) * 1%
+  ); //I have given this a css-variable called width with a default of 0. to be able to change the width with % it is converted to % with the * 1%
+  max-width: calc(100% - 0.2em); //and can not overflow it because of max width.
+  background-color: #069;
+  border-radius: 1em;
+  animation: timer 10s ease-in both; //makes the timer go slower in the begining and the speed up, the both makes it stay at 0 in the end.
 }
 
 @keyframes timer {
-    0% { width: 100%; }
-    100% { width: 0; }
+  0% {
+    width: 100%;
   }
+  100% {
+    width: 0;
+  }
+}
