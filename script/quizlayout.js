@@ -86,15 +86,16 @@ function hideBtn() {
         <p>${questionsAnswers[i].question}</p>
         </div> 
         <div class="answer-container">
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice1}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice2}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()">${questionsAnswers[i].choice3}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard(); restartTimer()"> ${questionsAnswers[i].choice4}</button>
+        <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice1}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice2}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard()">${questionsAnswers[i].choice3}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard()"> ${questionsAnswers[i].choice4}</button>
         </div>`;
         questionCounter++;
       } else {
         window.location.href = "index.html";
       }
+      console.log(questionsAnswers[i].answer)
   };
-console.log(questionsAnswers);
 
+console.log(questionsAnswers);
