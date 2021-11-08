@@ -99,7 +99,7 @@ function hideBtn() {
         </div>`;
         questionCounter++;
       } else {
-        window.location.href = "index.html";
+        window.location.href = "highscore.html";
       }
       initilizeButtons();
       shuffle();
