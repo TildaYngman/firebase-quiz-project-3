@@ -26,7 +26,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
-
 //Get all from firebase
 async function getNames() {
   // const users = await getDocs(collection(db, "users"));
@@ -38,22 +37,8 @@ async function getNames() {
   return names;
   console.log(names)
 
-
-
-
-
-
   // return users;
 };
-
-function readInput(id) {
-  if (!document.getElementById(id) && !document.getElementById(id).value) return null;
-
-  return document.getElementById(id).value;
-}
-
-
-
 
 function clearContentOfElement(id) {
   if (!document.getElementById(id)) return null;
