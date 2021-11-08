@@ -79,7 +79,7 @@ function hideBtn() {
         </div>`;
         questionCounter++;
         shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
-        timeOut();
+        checkIftimesOut();
       } else {
         window.location.href = "index.html";
       }
@@ -92,7 +92,7 @@ function restartTimer(){
   shrinkingTimerBar.style.animation = null; 
 } 
 
-function timeOut() {
+function checkIftimesOut() {
   shrinkingTimerBar.addEventListener("webkitAnimationEnd", timeOutWrongAnswer, false);
   shrinkingTimerBar.addEventListener("animationend", timeOutWrongAnswer, false);
 }
