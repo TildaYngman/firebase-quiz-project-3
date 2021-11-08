@@ -29,6 +29,11 @@ h3 {
 h1 {
   font-size: 1.5rem;
 }
+#highscore-text {
+  height: 13rem;
+  overflow: auto;
+  margin-bottom: 1rem;
+}
 
 .container {
   background: linear-gradient(to top, #3271e6e0, #181596e3),

@@ -114,6 +114,12 @@ h1 {
   font-size: 1.5rem;
 }
 
+#highscore-text {
+  height: 13rem;
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+
 .container {
   background: -webkit-gradient(linear, left bottom, left top, from(#3271e6e0), to(#181596e3)), url("/Images/cloud1.jpg");
   background: linear-gradient(to top, #3271e6e0, #181596e3), url("/Images/cloud1.jpg");
