@@ -13,7 +13,7 @@ async function loadedQuestionsFromApi() {
 
   let questionsAnswers = [];
   let questionCounter = 0;
-  let quizPoints = 0
+  let quizPoints = 1;
   
 document.addEventListener("DOMContentLoaded", async () => {
     let questions = [];
@@ -105,7 +105,6 @@ function hideBtn() {
       shuffle();
   };
 
-
   function initilizeButtons() {
     const buttons = document.querySelectorAll('.answerBtn')
     buttons.forEach(button => {
@@ -114,10 +113,13 @@ function hideBtn() {
         console.log(questionsArray[questionCounter - 2].correct_answer)
         if(button.innerText == questionsArray[questionCounter - 2].correct_answer) {
           console.log('Win')
-          quizPoints ++;
-          document.getElementById('display-score').innerHTML = "Score: " + quizPoints;
+          quizPoints *= 4;
+          document.getElementById('display-score').innerHTML = `Score: ${quizPoints}`;
           console.log(quizPoints);
-        }
+        } else  {
+          quizPoints /= 2 
+        document.getElementById('display-score').innerHTML = `Score: ${quizPoints}`;
+      }
       });
     })
 
