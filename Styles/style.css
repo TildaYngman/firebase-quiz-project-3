@@ -187,22 +187,23 @@ main {
       -ms-flex-align: center;
           align-items: center;
   width: 300px;
-  height: 2em;
-  border: 2px solid #069;
-  border-radius: 1em;
+  height: 2rem;
+  border: 2px solid red;
+  border-radius: 1rem;
 }
 
 .shrinking-timer-bar {
   width: 90%;
   height: 90%;
   position: absolute;
-  left: 0.1em;
+  left: .1rem;
   top: auto;
   bottom: auto;
-  width: calc( var(--width, 0) * 1%);
-  max-width: calc(100% - 0.2em);
-  background-color: #069;
-  border-radius: 1em;
+  width: calc(var(--width, 0) * 1%);
+  max-width: calc(100% - 1rem);
+  min-width: calc(0%);
+  background-color: red;
+  border-radius: 1rem;
   -webkit-animation: timer 10s ease-in both;
           animation: timer 10s ease-in both;
 }
@@ -224,3 +225,4 @@ main {
     width: 0;
   }
 }
+/*# sourceMappingURL=style.css.map */

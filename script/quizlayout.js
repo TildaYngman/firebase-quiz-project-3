@@ -13,7 +13,11 @@ async function loadedQuestionsFromApi() {
 
   let questionsAnswers = [];
   let questionCounter = 0;
+
   let quizPoints = 1;
+
+  let shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
+
   
 document.addEventListener("DOMContentLoaded", async () => {
     let questions = [];
@@ -71,7 +75,6 @@ function hideBtn() {
   function timeOut() {
     shrinkingTimerBar.addEventListener("webkitAnimationEnd", timeOutWrongAnswer, false);
     shrinkingTimerBar.addEventListener("animationend", timeOutWrongAnswer, false);
-    timeOut()
     timeOutWrongAnswer()
   }
 
