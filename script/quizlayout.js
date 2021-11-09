@@ -1,4 +1,5 @@
 let questionsArray = []
+let shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
 
 async function loadedQuestionsFromApi() {
     const response = await fetch(
@@ -13,10 +14,8 @@ async function loadedQuestionsFromApi() {
 
   let questionsAnswers = [];
   let questionCounter = 0;
-
   let quizPoints = 1;
 
-  let shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
 
   
 document.addEventListener("DOMContentLoaded", async () => {
@@ -91,7 +90,6 @@ function hideBtn() {
         console.log(questionsArray)
         if (questionCounter < 10) {
         wrapper.innerHTML = `
-        <div id="display-score"></div>
         <div class="question-container">
         <p>${questionsArray[i].question}</p>
         </div> 
