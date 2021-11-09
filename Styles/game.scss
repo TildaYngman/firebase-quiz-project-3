@@ -38,10 +38,7 @@
 }
 
 .answer-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
 }
 
 .answerBtn {
@@ -57,4 +54,12 @@
   width: 28rem;
   height: 5.5rem;
   text-align: center;
+}
+
+#display-score {
+  font-size: 4rem;
+}
+
+.correct {
+  background-color: green;
 }
