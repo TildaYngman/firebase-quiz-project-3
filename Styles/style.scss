@@ -96,10 +96,12 @@ main {
   width: 90%;
   height: 90%;
   position: absolute;
-  left: .1rem;
+  left: 0.1rem;
   top: auto;
   bottom: auto;
-  width: calc(var(--width, 0) * 1%); //I have given this a css-variable called width with a default of 0. to be able to change the width with % it is converted to % with the * 1%
+  width: calc(
+    var(--width, 0) * 1%
+  ); //I have given this a css-variable called width with a default of 0. to be able to change the width with % it is converted to % with the * 1%
   max-width: calc(100% - 1rem); //and can not overflow it because of max width.
   min-width: calc(0%);
   background-color: red;
@@ -108,6 +110,10 @@ main {
 }
 
 @keyframes timer {
-  0% { width: 100%; }
-  100% { width: 0; }
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
 }

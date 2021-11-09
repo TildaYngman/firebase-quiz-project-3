@@ -1,3 +1,6 @@
+
+/* QUIZ */
+
 let questionsArray = []
 let shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
 
@@ -35,12 +38,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 const startBtn = document.getElementById("start-quiz-btn")
+const showTimer = document.getElementById("time-container")
 
 startBtn.addEventListener('click', hideBtn)
 
 function hideBtn() {
   console.log("started")
   startBtn.classList.add('hide');
+  showTimer.classList.remove('hide')
 }
   
   // function formatQuestion(loadedQuestion) {
@@ -78,7 +83,10 @@ function hideBtn() {
   }
 
   function timeOutWrongAnswer() {
-    alert("The time is out");
+    createPreviewCard();
+    restartTimer();
+    quizPoints /= 2 
+    document.getElementById('display-score').innerHTML = `Score: ${quizPoints}`;
   }
 
   timeOut()
@@ -94,20 +102,31 @@ function hideBtn() {
         <p>${questionsArray[i].question}</p>
         </div> 
         <div class="answer-container">
-        <button class="answerBtn" onclick = "createPreviewCard()">${questionsArray[i].correct_answer}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard()">${questionsArray[i].incorrect_answers[0]}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard()">${questionsArray[i].incorrect_answers[1]}</button> 
-        <button class="answerBtn" onclick = "createPreviewCard()"> ${questionsArray[i].incorrect_answers[2]}</button>
+        <button class="answerBtn" onclick = "createPreviewCard(), restartTimer()" >${questionsArray[i].correct_answer}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard(), restartTimer()">${questionsArray[i].incorrect_answers[0]}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard(), restartTimer()">${questionsArray[i].incorrect_answers[1]}</button> 
+        <button class="answerBtn" onclick = "createPreviewCard(), restartTimer()"> ${questionsArray[i].incorrect_answers[2]}</button>
         </div>`;
         questionCounter++;
         console.log(questionCounter);
       } else {
-        wrapper.innerHTML = `<h1 id="display-score">${quizPoints}</h1>`;
+        
+          document.getElementById("time-bar-container").style.display = "none"
+          document.getElementById("display-score").style.display = "none"
+        wrapper.innerHTML = `
+        <div class="higscore-container">
+        <p>Enter Username:</p>
+        <input type="text" placeholder="Username" id="username" />
+        <p>Your Score:</p>
+        <p id="display-score">${quizPoints}</p>
+        <button id="addName" onclick="getToHighScore">Submit</button>
+        </div>`;
         // window.location.href = "highscore.html";
       }
       initilizeButtons();
       shuffle();
   };
+
 
   function initilizeButtons() {
     const buttons = document.querySelectorAll('.answerBtn')

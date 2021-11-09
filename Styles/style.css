@@ -69,11 +69,16 @@
 }
 
 #display-score {
-  font-size: 4rem;
+  font-size: 2rem;
+  color: white;
 }
 
 .correct {
   background-color: green;
+}
+
+.higscore-container {
+  font-size: 3rem;
 }
 
 *,
@@ -196,10 +201,10 @@ main {
   width: 90%;
   height: 90%;
   position: absolute;
-  left: .1rem;
+  left: 0.1rem;
   top: auto;
   bottom: auto;
-  width: calc(var(--width, 0) * 1%);
+  width: calc( var(--width, 0) * 1%);
   max-width: calc(100% - 1rem);
   min-width: calc(0%);
   background-color: red;
@@ -225,4 +230,3 @@ main {
     width: 0;
   }
 }
-/*# sourceMappingURL=style.css.map */

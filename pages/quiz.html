@@ -10,14 +10,15 @@
   </head>
   <body>
     <main>
-      <div id="display-score"></div>
       <div class="container">
-        <div class="timer-bar">
-          <div class="shrinking-timer-bar"></div>
+        <div id="display-score"></div>
+        <div class="hide" id="time-container">
+          <div class="timer-bar" id="time-bar-container">
+            <div class="shrinking-timer-bar"></div>
+          </div>
         </div>
-        <button onclick="restartTimer()">Restart Timer</button>
-
         <div id="postsSummaries"></div>
+
         <button id="start-quiz-btn" onclick="createPreviewCard()">
           Start Quiz
         </button>
@@ -28,7 +29,6 @@
       type="module"
     ></script>
     <script src="../script/quizlayout.js"></script>
-    <script src="./script/script.js" type="module"></script>
-    <script src="../script/script.js"></script>
+    <script src="../script/script.js" type="module"></script>
   </body>
 </html>
