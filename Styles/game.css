@@ -12,7 +12,7 @@
   padding: 1rem;
   text-decoration: none;
   margin-bottom: 1.5rem;
-  width: 28rem;
+  width: 18rem;
   height: 5.5rem;
   text-align: center;
 }
@@ -34,11 +34,14 @@
 }
 
 .question-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   background-color: white;
   border-radius: 0.7rem;
   padding: 2rem;
   margin: 2rem;
-  width: 42.5rem;
+  width: 30rem;
   height: 15rem;
   text-align: center;
 }
@@ -63,7 +66,7 @@
   padding: 1rem;
   text-decoration: none;
   margin-bottom: 1.5rem;
-  width: 28rem;
+  width: 18rem;
   height: 5.5rem;
   text-align: center;
 }
