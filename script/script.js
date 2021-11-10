@@ -6,6 +6,8 @@ import {
   doc,
   deleteDoc,
   getDocs,
+  orderBy,
+  query,
 } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
 
 //Add your own config content
@@ -48,30 +50,54 @@ window.addUser = (username, score) => {
     var id = this.getAttribute("data-id");
     await deleteDoc(doc(db, "users", id));
     displayNamesInList("listOfNames");
+  } catch (e) {
+    console.error("Error adding document: ", e);
   }
-  
-  //Get all from firebase
-  async function getNames() {
-    const users = await getDocs(collection(db, "users"));
-    return users;
-  };
-  
-  function readInput(id){
-    if(!document.getElementById(id) && !document.getElementById(id).value) return null;
-    
-    return document.getElementById(id).value;
-  }
-  
-  
-  
-  
-  function clearContentOfElement(id){
-    if (!document.getElementById(id)) return null;
-    document.getElementById(id).innerHTML = "";
-  }
-  
-  function formatListItem(item){
-    return `<li>
+}
+
+//Remove to firebase
+async function deleteName() {
+  var id = this.getAttribute("data-id");
+  await deleteDoc(doc(db, "users", id));
+  displayNamesInList("listOfNames");
+}
+
+
+//Get all from firebase
+async function getNames() {
+  // const users = await getDocs(collection(db, "users"));
+
+  const docRef = collection(db, "users");
+  const q = query(docRef, orderBy("score", "desc"));
+  const names = await getDocs(q);
+  console.log(names)
+  return names;
+  console.log(names)
+
+
+
+
+
+
+  // return users;
+};
+
+function readInput(id) {
+  if (!document.getElementById(id) && !document.getElementById(id).value) return null;
+
+  return document.getElementById(id).value;
+}
+
+
+
+
+function clearContentOfElement(id) {
+  if (!document.getElementById(id)) return null;
+  document.getElementById(id).innerHTML = "";
+}
+
+function formatListItem(item) {
+  return `<li>
               <h3>User name: ${item.username} score: ${item.score}</h3> 
 
               <button 
@@ -80,7 +106,28 @@ window.addUser = (username, score) => {
                 DELETE
               </button>
             </li>`;
+}
+function clearInput(id) {
+  if (!document.getElementById(id)) return null;
+  document.getElementById(id).value = '';
+}
+
+function addNameToList(list, item) {
+  if (!document.getElementById(list)) return null;
+  document.getElementById(list).innerHTML += formatListItem(item);
+};
+
+function addEventListner() {
+  if (!document.getElementById("addName")) return null;
+  document.getElementById("addName").removeEventListener("click", addName);
+  document.getElementById("addName").addEventListener("click", addName);
+
+  if (!document.getElementsByClassName("deleteName")) return null;
+  var elements = document.getElementsByClassName("deleteName");
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener("click", deleteName, false);
   }
+
   function clearInput(id){
     if(!document.getElementById(id)) return null;
     document.getElementById(id).value = '';
