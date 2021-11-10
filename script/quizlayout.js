@@ -130,8 +130,6 @@ function createPreviewCard() {
     console.log("your sccore", quizPoints)
     createEventListener(quizPoints)
   }
-  shuffle();
-};
 
 
 function createEventListener(score) {
