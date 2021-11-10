@@ -28,7 +28,7 @@
   background-color: white;
   border-radius: 0.7rem;
   padding: 2rem;
-  margin: 5rem;
+  margin: 2rem;
   width: 42.5rem;
   height: 15rem;
   text-align: center;
@@ -38,10 +38,7 @@
 }
 
 .answer-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
 }
 
 .answerBtn {
@@ -57,4 +54,48 @@
   width: 28rem;
   height: 5.5rem;
   text-align: center;
+}
+
+#display-score {
+  font-size: 2rem;
+  color: white;
+}
+
+.correct {
+  background-color: green;
+}
+
+.higscore-container {
+  text-align: center;
+  font-size: 3rem;
+  color: white;
+  h3 {
+    font-size: 5rem;
+    margin: 2rem;
+  }
+  input {
+    width: 28rem;
+  }
+}
+
+#saveHighScore {
+  cursor: pointer;
+  border-radius: 5rem;
+  background-color: #203b81;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 1rem;
+  text-decoration: none;
+  margin: 1.5rem;
+  width: 28rem;
+  height: 5.5rem;
+  text-align: center;
+}
+
+.username-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
