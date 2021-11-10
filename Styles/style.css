@@ -306,4 +306,18 @@ h1 {
 #quiz-landing-logo {
   height: 25rem;
 }
+
+@media only screen and (max-width: 400px) {
+  .container {
+    background: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  body {
+    background: #04034de3;
+  }
+  .timer-bar {
+    width: 25rem;
+  }
+}
 /*# sourceMappingURL=style.css.map */
