@@ -13,7 +13,7 @@
   padding: 1rem;
   text-decoration: none;
   margin-bottom: 1.5rem;
-  width: 28rem;
+  width: 18rem;
   height: 5.5rem;
   text-align: center;
 }
@@ -24,22 +24,25 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .question-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   background-color: white;
   border-radius: 0.7rem;
   padding: 2rem;
   margin: 2rem;
-  width: 42.5rem;
+  width: 30rem;
   height: 15rem;
   text-align: center;
 }
@@ -64,7 +67,7 @@
   padding: 1rem;
   text-decoration: none;
   margin-bottom: 1.5rem;
-  width: 28rem;
+  width: 18rem;
   height: 5.5rem;
   text-align: center;
 }
@@ -110,21 +113,21 @@
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 *,
 *::before,
 *::after {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-size: 62.5%;
   font-family: "Inter", sans-serif;
 }
@@ -132,8 +135,16 @@
 body {
   margin: 0;
   padding: 0;
-  background: -webkit-gradient(linear, left bottom, left top, from(#2267e7e0), to(#04034de3)), url("/Images/cloud1.jpg");
-  background: linear-gradient(to top, #2267e7e0, #04034de3), url("/Images/cloud1.jpg");
+  background: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      from(#2267e7e0),
+      to(#04034de3)
+    ),
+    url("/Images/cloud1.jpg");
+  background: linear-gradient(to top, #2267e7e0, #04034de3),
+    url("/Images/cloud1.jpg");
   background-size: cover;
   min-height: 100vh;
 }
@@ -143,8 +154,8 @@ main {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 h3 {
@@ -162,8 +173,16 @@ h1 {
 }
 
 .container {
-  background: -webkit-gradient(linear, left bottom, left top, from(#3271e6e0), to(#181596e3)), url("/Images/cloud1.jpg");
-  background: linear-gradient(to top, #3271e6e0, #181596e3), url("/Images/cloud1.jpg");
+  background: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      from(#3271e6e0),
+      to(#181596e3)
+    ),
+    url("/Images/cloud1.jpg");
+  background: linear-gradient(to top, #3271e6e0, #181596e3),
+    url("/Images/cloud1.jpg");
   background-size: cover;
   border-radius: 0.7rem;
   display: -webkit-box;
@@ -171,19 +190,20 @@ h1 {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 58rem;
   width: 45rem;
-  margin: 10rem;
+  min-width: 300px;
+  margin: 2rem 10rem;
   -webkit-box-shadow: 0px 0px 15px 5px rgba(253, 246, 246, 0.5);
-          box-shadow: 0px 0px 15px 5px rgba(253, 246, 246, 0.5);
+  box-shadow: 0px 0px 15px 5px rgba(253, 246, 246, 0.5);
   color: white;
   font-size: 1.5rem;
 }
@@ -194,11 +214,11 @@ h1 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 18rem;
   width: 18rem;
   border-radius: 50%;
@@ -241,12 +261,12 @@ h1 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 42.5rem;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 30rem;
   height: 3rem;
   border: 2px solid #767676;
   border-radius: 0.7rem;
@@ -260,13 +280,13 @@ h1 {
   left: 0.1rem;
   top: auto;
   bottom: auto;
-  width: calc( var(--width, 0) * 1%);
-  max-width: calc( 100% - 0.3rem);
+  width: calc(var(--width, 0) * 1%);
+  max-width: calc(100% - 0.3rem);
   min-width: 0.5rem;
   background-color: #63f700;
   border-radius: 0.4rem;
   -webkit-animation: timer 12s ease-in none;
-          animation: timer 12s ease-in none;
+  animation: timer 12s ease-in none;
 }
 
 @-webkit-keyframes timer {
@@ -302,3 +322,4 @@ h1 {
 #quiz-landing-logo {
   height: 25rem;
 }
+/*# sourceMappingURL=style.css.map */
