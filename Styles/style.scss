@@ -115,9 +115,7 @@ h1 {
   left: 0.5em;
   top: 0.5em;
   bottom: 0.5em;
-  width: calc(
-    0 * 1%
-  ); //I have given this a width of 0 * 1% to convert it to % and be able to change the width with %.
+  width: 0;
   max-width: calc(
     100% - 1em
   ); //and can not overflow the parent because i take away 1 em from max width.
