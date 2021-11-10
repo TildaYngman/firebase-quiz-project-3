@@ -123,6 +123,9 @@ function createEventListener(score) {
     console.log(username, score)
     window.addUser(username, score)
     document.getElementById("username").value = "";
+    setTimeout(function () {
+      window.location.href = "./highscore.html";
+   }, 500);
   })
   // onclick="window.addUser(${document.getElementById("username").value}, ${quizPoints})
 }
