@@ -93,25 +93,35 @@ function hideBtn() {
         questionCounter++;
         shrinkingTimerBar = document.querySelector(".shrinking-timer-bar");
         checkIftimesOut();
+        initilizeButtons();
         console.log(questionCounter);
       } else {
         
           // document.getElementById("time-bar-container").style.display = "none"
-          document.getElementById("display-score").style.display = "none"
         wrapper.innerHTML = `
         <div class="higscore-container">
         <p>Enter Username:</p>
         <input type="text" placeholder="Username" id="username" />
         <p>Your Score:</p>
-        <p id="display-score">${quizPoints}</p>
-        <button id="saveHighScore" onclick="getToHighScore">Submit</button>
+        <p>${quizPoints}</p>
+        <button id="saveHighScore">Submit</button>
         </div>`;
         // window.location.href = "highscore.html";
+        //try to insert export
+        console.log("your sccore", quizPoints)
+        createEventListener(quizPoints)
       }
-      initilizeButtons();
       shuffle();
   };
   
+  function createEventListener(score) {
+    document.getElementById("saveHighScore").addEventListener('click', function() {
+      var username = document.getElementById("username").value
+      console.log(username, score)
+      window.addUser(username, score)
+    })
+    // onclick="window.addUser(${document.getElementById("username").value}, ${quizPoints})
+  }
 
   function initilizeButtons() {
     const buttons = document.querySelectorAll('.answerBtn')
@@ -119,6 +129,9 @@ function hideBtn() {
       button.addEventListener('click', () => {
         console.log(button.innerText)
         console.log(questionsArray[questionCounter - 2].correct_answer)
+        if(!document.getElementById("display-score")){
+    return null
+  }
         if(button.innerText == questionsArray[questionCounter - 2].correct_answer) {
           console.log('Win')
           quizPoints *= 4;
@@ -138,7 +151,7 @@ function shuffle() {
     let randomPos = Math.floor(Math.random() * 4)
     card.style.order = randomPos
   })
-}
+} // Lets try to understand this
 
 function restartTimer(){
   shrinkingTimerBar.style.animation = 'none';
@@ -152,7 +165,6 @@ function checkIftimesOut() {
 }
 
 function timeOutWrongAnswer() {
-  // alert("The time is out");
   createPreviewCard();
   quizPoints /= 2 
   document.getElementById('display-score').innerHTML = `Score: ${quizPoints}`;

@@ -100,17 +100,29 @@ main {
   left: 0.1rem;
   top: auto;
   bottom: auto;
-  width: calc(var(--width, 0) * 1%); //I have given this a css-variable called width with a default of 0. to be able to change the width with % it is converted to % with the * 1%
-  max-width: calc(100% - 0.3rem); //and can not overflow it because of max width.
+  width: calc(
+    var(--width, 0) * 1%
+  ); //I have given this a css-variable called width with a default of 0. to be able to change the width with % it is converted to % with the * 1%
+  max-width: calc(
+    100% - 0.3rem
+  ); //and can not overflow it because of max width.
   min-width: 0.5rem;
   background-color: #63f700;
   border-radius: 0.4rem;
-  animation: timer 10s ease-in both; //makes the timer go slower in the begining and the speed up, the both makes it stay at 0 in the end.
+  animation: timer 10s ease-in none; //makes the timer go slower in the begining and the speed up, the both makes it stay at 0 in the end.
 }
 
 @keyframes timer {
-  from {background-color: #63f700;}
-  to {background-color: rgb(255, 0, 0);}
-  0% {width: 100%;}
-  100% {width: 0;}
+  from {
+    background-color: #63f700;
+  }
+  to {
+    background-color: rgb(255, 0, 0);
+  }
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
 }

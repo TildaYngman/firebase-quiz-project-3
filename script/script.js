@@ -23,19 +23,21 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   
+window.addUser = (username, score) => {
+  console.log("username", username, "score", score)
+  addName(username, score)
+}
+
+
+
   //Add to firebase
-  async function addName(){
-    var username = readInput("username");
-    var score = readInput("score");
+  async function addName(username, score){
     if (!username) return null;
       try {
         const docRef = await addDoc(collection(db, "users"), {
           username: username,
           score: score,
         });
-        clearInput("username");
-        clearInput("score")
-        displayNamesInList("listOfNames");
       } catch (e) {
         console.error("Error adding document: ", e);
       }
