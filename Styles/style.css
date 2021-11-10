@@ -302,3 +302,7 @@ h1 {
     width: 0;
   }
 }
+
+#quiz-landing-logo {
+  height: 25rem;
+}
