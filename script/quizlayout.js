@@ -108,28 +108,29 @@ function createPreviewCard() {
         <p>Enter your username:</p>
         <input type="text" placeholder="Username..." id="username" />
         <button id="saveHighScore">Submit</button>
+        <button class="homeButton" onclick="window.location.href='index.html'">Home</button>
         </div>`;
-        // window.location.href = "highscore.html";
-        //try to insert export
-        console.log("your sccore", quizPoints)
-        createEventListener(quizPoints)
-      }
-      shuffle();
-  };
-  
-  function createEventListener(score) {
-    document.getElementById("saveHighScore").addEventListener('click', function() {
-      var username = document.getElementById("username").value
-      console.log(username, score)
-      window.addUser(username, score)
-      document.getElementById("username").value = "";
-    })
-    // onclick="window.addUser(${document.getElementById("username").value}, ${quizPoints})
     // window.location.href = "highscore.html";
     //try to insert export
     console.log("your sccore", quizPoints)
     createEventListener(quizPoints)
   }
+  shuffle();
+};
+
+function createEventListener(score) {
+  document.getElementById("saveHighScore").addEventListener('click', function () {
+    var username = document.getElementById("username").value
+    console.log(username, score)
+    window.addUser(username, score)
+    document.getElementById("username").value = "";
+  })
+  // onclick="window.addUser(${document.getElementById("username").value}, ${quizPoints})
+  // window.location.href = "highscore.html";
+  //try to insert export
+  console.log("your sccore", quizPoints)
+  createEventListener(quizPoints)
+}
 
 
 function createEventListener(score) {
