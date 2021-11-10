@@ -97,7 +97,7 @@ main {
   width: 90%;
   height: 90%;
   position: absolute;
-  left: .1rem;
+  left: 0.1rem;
   top: auto;
   bottom: auto;
   width: calc(var(--width, 0) * 1%); //I have given this a css-variable called width with a default of 0. to be able to change the width with % it is converted to % with the * 1%

@@ -120,4 +120,3 @@ const firebaseConfig = {
   }
   
   init();
-
