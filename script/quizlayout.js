@@ -1,3 +1,5 @@
+
+
 /* QUIZ */
 
 let questionsArray = []
@@ -40,8 +42,9 @@ startBtn.addEventListener('click', hideBtn);
 function hideBtn() {
   console.log("started")
   startBtn.classList.add('hide');
-  showTimer.classList.remove('hide')
+  createPreviewCard();
 }
+
   
   // function formatQuestion(loadedQuestion) {
   //   const formattedQuestion = {
@@ -64,13 +67,14 @@ function hideBtn() {
   //   //choice = [choice1, choice2...] in formattedQuestion object
   //   return formattedQuestion;
   // }
-
   function createPreviewCard() {
+    console.log("running function")
     var wrapper = document.getElementById("postsSummaries")
         let i = questionCounter;
         console.log(questionsArray)
         if (questionCounter < 10) {
         wrapper.innerHTML = `
+        <div id="display-score"></div>
         <div class="question-container">
 
         <p>${questionsArray[i].question}</p>
@@ -92,7 +96,7 @@ function hideBtn() {
         console.log(questionCounter);
       } else {
         
-          document.getElementById("time-bar-container").style.display = "none"
+          // document.getElementById("time-bar-container").style.display = "none"
           document.getElementById("display-score").style.display = "none"
         wrapper.innerHTML = `
         <div class="higscore-container">
@@ -100,13 +104,14 @@ function hideBtn() {
         <input type="text" placeholder="Username" id="username" />
         <p>Your Score:</p>
         <p id="display-score">${quizPoints}</p>
-        <button id="addName" onclick="getToHighScore">Submit</button>
+        <button id="saveHighScore" onclick="getToHighScore">Submit</button>
         </div>`;
         // window.location.href = "highscore.html";
       }
       initilizeButtons();
       shuffle();
   };
+  
 
   function initilizeButtons() {
     const buttons = document.querySelectorAll('.answerBtn')
@@ -146,7 +151,9 @@ function checkIftimesOut() {
   shrinkingTimerBar.addEventListener("animationend", timeOutWrongAnswer, false);
 }
 
-
 function timeOutWrongAnswer() {
-  alert("The time is out");
+  // alert("The time is out");
+  createPreviewCard();
+  quizPoints /= 2 
+  document.getElementById('display-score').innerHTML = `Score: ${quizPoints}`;
 }
