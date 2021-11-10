@@ -37,10 +37,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const startBtn = document.getElementById("start-quiz-btn");
 
+
+
 startBtn.addEventListener('click', hideBtn);
 
 function hideBtn() {
   console.log("started")
+  document.getElementById("quiz-landing-logo").classList.add("hide")
   startBtn.classList.add('hide');
   createPreviewCard();
 }
