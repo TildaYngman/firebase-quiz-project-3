@@ -107,7 +107,7 @@ function createPreviewCard() {
         <h3>${quizPoints}</h3>
         <p>Enter your username:</p>
         <input type="text" placeholder="Username..." id="username" />
-        <button id="saveHighScore" onclick="window.location.href='highscore.html';">Submit</button>
+        <button id="saveHighScore">Submit</button>
         </div>`;
     // window.location.href = "highscore.html";
     //try to insert export
@@ -117,11 +117,13 @@ function createPreviewCard() {
   shuffle();
 };
 
+
 function createEventListener(score) {
   document.getElementById("saveHighScore").addEventListener('click', function () {
     var username = document.getElementById("username").value
     console.log(username, score)
     window.addUser(username, score)
+    document.getElementById("username").value = "";
   })
   // onclick="window.addUser(${document.getElementById("username").value}, ${quizPoints})
 }
