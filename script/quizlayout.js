@@ -119,6 +119,7 @@ function hideBtn() {
       var username = document.getElementById("username").value
       console.log(username, score)
       window.addUser(username, score)
+      document.getElementById("username").value = "";
     })
     // onclick="window.addUser(${document.getElementById("username").value}, ${quizPoints})
   }
