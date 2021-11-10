@@ -74,10 +74,6 @@
   color: white;
 }
 
-.correct {
-  background-color: green;
-}
-
 .higscore-container {
   text-align: center;
   font-size: 3rem;
@@ -264,10 +260,8 @@ h1 {
   left: 0.1rem;
   top: auto;
   bottom: auto;
-  width: calc(
- var(--width, 0) * 1%);
-  max-width: calc(
- 100% - 0.3rem);
+  width: calc( var(--width, 0) * 1%);
+  max-width: calc( 100% - 0.3rem);
   min-width: 0.5rem;
   background-color: #63f700;
   border-radius: 0.4rem;
