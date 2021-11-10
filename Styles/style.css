@@ -46,6 +46,7 @@
 
 .question-container p {
   font-size: 1.6rem;
+  color: black;
 }
 
 .answer-container {
@@ -80,12 +81,12 @@
 .higscore-container {
   text-align: center;
   font-size: 3rem;
-  color: white;
 }
 
 .higscore-container h3 {
   font-size: 5rem;
   margin: 2rem;
+  color: white;
 }
 
 .higscore-container input {

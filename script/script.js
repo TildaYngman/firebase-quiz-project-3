@@ -45,15 +45,15 @@ window.addUser = (username, score) => {
       }
   }
   
-  //Remove to firebase
-  async function deleteName(){
-    var id = this.getAttribute("data-id");
-    await deleteDoc(doc(db, "users", id));
-    displayNamesInList("listOfNames");
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-}
+//   //Remove to firebase
+//   async function deleteName(){
+//     var id = this.getAttribute("data-id");
+//     await deleteDoc(doc(db, "users", id));
+//     displayNamesInList("listOfNames");
+//   } catch (e) {
+//     console.error("Error adding document: ", e);
+//   }
+// }
 
 //Remove to firebase
 async function deleteName() {
@@ -166,5 +166,4 @@ function addEventListner() {
     await displayNamesInList("listOfNames");
     addEventListner();
   }
-  
-  init();
+  init()};
