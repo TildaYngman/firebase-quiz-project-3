@@ -125,7 +125,7 @@ function createEventListener(score) {
     document.getElementById("username").value = "";
     setTimeout(function () {
       window.location.href = "./highscore.html";
-   }, 500);
+   }, 400);
   })
   // onclick="window.addUser(${document.getElementById("username").value}, ${quizPoints})
 }
