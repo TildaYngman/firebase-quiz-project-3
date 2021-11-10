@@ -100,10 +100,10 @@ function hideBtn() {
           // document.getElementById("time-bar-container").style.display = "none"
         wrapper.innerHTML = `
         <div class="higscore-container">
-        <p>Enter Username:</p>
-        <input type="text" placeholder="Username" id="username" />
-        <p>Your Score:</p>
-        <p>${quizPoints}</p>
+        <h4>Your Score:</h4>
+        <h3>${quizPoints}</h3>
+        <p>Enter your username:</p>
+        <input type="text" placeholder="Username..." id="username" />
         <button id="saveHighScore">Submit</button>
         </div>`;
         // window.location.href = "highscore.html";
