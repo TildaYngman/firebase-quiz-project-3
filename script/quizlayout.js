@@ -173,17 +173,12 @@ function shuffle() {
 } // Lets try to understand this
 
 function restartTimer() {
-  shrinkingTimerBar.style.animation = "none";
-  shrinkingTimerBar.offsetHeight; /* trigger reflow */
+  shrinkingTimerBar.style.animation = 'none';
   shrinkingTimerBar.style.animation = null;
 }
 
-function checkIftimesOut() {
-  shrinkingTimerBar.addEventListener(
-    "webkitAnimationEnd",
-    timeOutWrongAnswer,
-    false
-  );
+function checkIftimesOut() { //called in createpreviewcard
+  shrinkingTimerBar.addEventListener("webkitAnimationEnd", timeOutWrongAnswer, false); //timeOutWrongAnswer() defined further down. and called in 
   shrinkingTimerBar.addEventListener("animationend", timeOutWrongAnswer, false);
 }
 
