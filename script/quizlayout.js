@@ -1,34 +1,43 @@
-
-
 /* QUIZ */
 
-let questionsArray = []
+let questionsArray = [];
 let questionsAnswers = [];
 let questionCounter = 0;
 let shrinkingTimerBar;
 let quizPoints = 1;
+let questions = [];
 
 async function loadedQuestionsFromApi() {
   const response = await fetch(
     "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
   );
-  //variabel questions is waiting for the response to be formatted to json.
-  const questions = await response.json();
-  questionsArray = questions.results
 
-  return questions;
+  //Questions contain the formatted json response. The response is an object, containging two propertys the response code and the results. The results is an array of the 10 objects (questions).
+
+  //questionsArray is an array of 10 objects (questions)
+
+  //waiting for the response to be formatted to json.
+
+  //we write return so we can use the value of resoponse.json outside of the function.
+  return await response.json();
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  let questions = [];
-
   try {
+    //the variable questions is wating for the loadedQuestionsFromApi function to return response.json
     questions = await loadedQuestionsFromApi();
   } catch (e) {
     console.log("Error!");
     console.log(e);
   }
+
+  //Questions contain the formatted json response. The response is an object, containging two propertys the response code and the results. The results is an array of the 10 objects (questions).
   console.log(questions);
+
+  //questionsArray is an array of 10 objects(questions)
+  questionsArray = questions.results;
+  console.log(questionsArray);
+
   // questionsAnswers = questions.results.map((question) => {
   //     return formatQuestion(question);
   // });
@@ -37,17 +46,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const startBtn = document.getElementById("start-quiz-btn");
 
-
-
-startBtn.addEventListener('click', hideBtn);
+startBtn.addEventListener("click", hideBtn);
 
 function hideBtn() {
-  console.log("started")
-  document.getElementById("quiz-landing-logo").classList.add("hide")
-  startBtn.classList.add('hide');
+  console.log("started");
+  document.getElementById("quiz-landing-logo").classList.add("hide");
+  startBtn.classList.add("hide");
   createPreviewCard();
 }
-
 
 // function formatQuestion(loadedQuestion) {
 //   const formattedQuestion = {
@@ -71,10 +77,10 @@ function hideBtn() {
 //   return formattedQuestion;
 // }
 function createPreviewCard() {
-  console.log("running function")
-  var wrapper = document.getElementById("postsSummaries")
+  console.log("running function");
+  var wrapper = document.getElementById("postsSummaries");
   let i = questionCounter;
-  console.log(questionsArray)
+  console.log(questionsArray);
   if (questionCounter < 10) {
     wrapper.innerHTML = `
         <div id="display-score"></div>
@@ -99,7 +105,6 @@ function createPreviewCard() {
     initilizeButtons();
     console.log(questionCounter);
   } else {
-
     // document.getElementById("time-bar-container").style.display = "none"
     wrapper.innerHTML = `
         <div class="higscore-container">
@@ -109,55 +114,62 @@ function createPreviewCard() {
         <input type="text" placeholder="Username..." id="username" />
         <button id="saveHighScore">Submit</button>
         </div>`;
-        // window.location.href = "highscore.html";
-        //try to insert export
-        console.log("your sccore", quizPoints)
-        createEventListener(quizPoints)
-      }
-      shuffle();
-  };
+    // window.location.href = "highscore.html";
+    //try to insert export
+    console.log("your sccore", quizPoints);
+    createEventListener(quizPoints);
+  }
+  shuffle();
+}
 
 function createEventListener(score) {
-  document.getElementById("saveHighScore").addEventListener('click', function () {
-    var username = document.getElementById("username").value
-    console.log(username, score)
-    window.addUser(username, score)
-    document.getElementById("username").value = "";
-    setTimeout(function () {
-      window.location.href = "./highscore.html";
-   }, 400);
-  })
+  document
+    .getElementById("saveHighScore")
+    .addEventListener("click", function () {
+      var username = document.getElementById("username").value;
+      console.log(username, score);
+      window.addUser(username, score);
+      document.getElementById("username").value = "";
+      setTimeout(function () {
+        window.location.href = "./highscore.html";
+      }, 400);
+    });
   // onclick="window.addUser(${document.getElementById("username").value}, ${quizPoints})
 }
 
 function initilizeButtons() {
-  const buttons = document.querySelectorAll('.answerBtn')
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      console.log(button.innerText)
-      console.log(questionsArray[questionCounter - 2].correct_answer)
+  const buttons = document.querySelectorAll(".answerBtn");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      console.log(button.innerText);
+      console.log(questionsArray[questionCounter - 2].correct_answer);
       if (!document.getElementById("display-score")) {
-        return null
+        return null;
       }
-      if (button.innerText == questionsArray[questionCounter - 2].correct_answer) {
-        console.log('Win')
+      if (
+        button.innerText == questionsArray[questionCounter - 2].correct_answer
+      ) {
+        console.log("Win");
         quizPoints *= 4;
-        document.getElementById('display-score').innerHTML = `Score: ${quizPoints}`;
+        document.getElementById(
+          "display-score"
+        ).innerHTML = `Score: ${quizPoints}`;
         console.log(quizPoints);
       } else {
-        quizPoints /= 2
-        document.getElementById('display-score').innerHTML = `Score: ${quizPoints}`;
+        quizPoints /= 2;
+        document.getElementById(
+          "display-score"
+        ).innerHTML = `Score: ${quizPoints}`;
       }
     });
-  })
-
+  });
 }
 function shuffle() {
-  const cards = document.querySelectorAll('.answerBtn');
-  cards.forEach(card => {
-    let randomPos = Math.floor(Math.random() * 4)
-    card.style.order = randomPos
-  })
+  const cards = document.querySelectorAll(".answerBtn");
+  cards.forEach((card) => {
+    let randomPos = Math.floor(Math.random() * 4);
+    card.style.order = randomPos;
+  });
 } // Lets try to understand this
 
 function restartTimer() {
@@ -172,6 +184,6 @@ function checkIftimesOut() { //called in createpreviewcard
 
 function timeOutWrongAnswer() {
   createPreviewCard();
-  quizPoints /= 2
-  document.getElementById('display-score').innerHTML = `Score: ${quizPoints}`;
+  quizPoints /= 2;
+  document.getElementById("display-score").innerHTML = `Score: ${quizPoints}`;
 }
